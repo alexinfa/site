@@ -13,5 +13,10 @@
     "gulp-plumber": "^1.2.1",
     "gulp-sass": "^5.1.0",
     "sass": "^1.69.0"
+  },
+  "scripts": {
+    "new-page": "node create-page.js",
+    "new-component": "node create-component.js",
+    "start": "npx gulp"
   }
 }
