@@ -1,37 +1,39 @@
-const { src, dest, watch, series } = require('gulp');
+const { src, dest, watch, series, parallel } = require('gulp');
+const nunjucksRender = require('gulp-nunjucks-render');
+const data = require('gulp-data');
 const sass = require('gulp-sass')(require('sass'));
-const fileInclude = require('gulp-file-include');
 const browserSync = require('browser-sync').create();
 const clean = require('gulp-clean');
 const htmlbeautify = require('gulp-html-beautify');
 
-/* PATHS */
+// PATHS
 const paths = {
-  pages: 'src/pages/**/*.html',
-  components: 'src/components/**/*.html',
+  pages: 'src/pages/**/*.njk',
+  templates: 'src/templates/',
   scss: 'src/scss/**/*.scss',
   scssEntry: 'src/scss/main.scss',
+  js: 'src/js/**/*.js',
+  images: 'src/images/**/*',
   dist: 'dist'
 };
 
-/* TASKS */
+// Pulisce dist
 function cleanDist() {
   return src(paths.dist, { allowEmpty: true, read: false }).pipe(clean());
 }
 
+// Compila Nunjucks
 function html() {
-  return src(paths.pages, { allowEmpty: true })
-    .pipe(fileInclude({ prefix: '@@', basepath: 'src/components/' }))
-    .pipe(htmlbeautify({
-      indent_size: 2,
-      indent_with_tabs: false,
-      end_with_newline: true,
-      preserve_newlines: true
+  return src('src/pages/**/*.njk')
+    .pipe(nunjucksRender({
+      path: ['src/templates', 'src/components']  // ← Nunjucks sa dove cercare
     }))
+    .pipe(htmlbeautify({ indent_size: 2 }))
     .pipe(dest(paths.dist))
     .pipe(browserSync.stream());
 }
 
+// SCSS
 function styles() {
   return src(paths.scssEntry)
     .pipe(sass())
@@ -39,16 +41,33 @@ function styles() {
     .pipe(browserSync.stream());
 }
 
+// JS
+function scripts() {
+  return src(paths.js)
+    .pipe(dest(paths.dist + '/js'))
+    .pipe(browserSync.stream());
+}
+
+// Immagini
+function images() {
+  return src(paths.images)
+    .pipe(dest(paths.dist + '/images'))
+    .pipe(browserSync.stream());
+}
+
+// Server + Watch
 function serve() {
   browserSync.init({ server: { baseDir: paths.dist } });
 
-  watch(
-    [paths.pages, paths.components],
-    { ignoreInitial: false, usePolling: true, interval: 500 },
-    html
-  );
-  watch(paths.scss, { ignoreInitial: false, usePolling: true, interval: 500 }, styles);
+  watch(paths.scss, styles);
+  watch(paths.js, scripts);
+  watch(paths.images, images);
+  watch([paths.pages, paths.templates + '**/*.njk'], html);
 }
 
-/* EXPORT */
-exports.default = series(cleanDist, html, styles, serve);
+// Export default
+exports.default = series(
+  cleanDist,
+  parallel(html, styles, scripts, images),
+  serve
+);
