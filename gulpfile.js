@@ -17,7 +17,7 @@ const paths = {
   dist: 'dist'
 };
 
-// Pulisce dist
+// Clean dist
 function cleanDist() {
   return src(paths.dist, { allowEmpty: true, read: false }).pipe(clean());
 }
@@ -26,7 +26,7 @@ function cleanDist() {
 function html() {
   return src('src/pages/**/*.njk')
     .pipe(nunjucksRender({
-      path: ['src/templates', 'src/components']  // ← Nunjucks sa dove cercare
+      path: ['src/templates', 'src/components']
     }))
     .pipe(htmlbeautify({ indent_size: 2 }))
     .pipe(dest(paths.dist))
@@ -62,7 +62,12 @@ function serve() {
   watch(paths.scss, styles);
   watch(paths.js, scripts);
   watch(paths.images, images);
-  watch([paths.pages, paths.templates + '**/*.njk'], html);
+
+  watch([
+    paths.pages,
+    paths.templates + '**/*.njk',
+    'src/components/**/*.njk'
+  ], html);
 }
 
 // Export default

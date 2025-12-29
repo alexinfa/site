@@ -1,8 +1,11 @@
-{% extends "../templates/base.njk" %}
+{% extends "base.njk" %}
 
 {% block content %}
 <main>
   <h1>about</h1>
   <p>Contenuto della pagina about</p>
+
+  {% include "modals/esempio.njk" %}
+
 </main>
 {% endblock %}

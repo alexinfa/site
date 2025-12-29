@@ -1,22 +1,35 @@
 const fs = require('fs');
 const path = require('path');
 
-const componentName = process.argv[2];
+const componentPath = process.argv[2];
 
-if (!componentName) {
-  console.log("Usage: npm run new-component -- <nome-componente>");
+if (!componentPath) {
+  console.log('Usage: npm run new-component -- cartella/nome-componente');
   process.exit(1);
 }
 
-const componentsDir = path.join(__dirname, 'src', 'components');
-const filePath = path.join(componentsDir, `${componentName}.njk`);
+// Percorso base components
+const componentsBaseDir = path.join(__dirname, 'src', 'components');
 
-if (fs.existsSync(filePath)) {
-  console.log(`Il componente ${componentName} esiste già!`);
+// Percorso completo del file
+const fullPath = path.join(componentsBaseDir, `${componentPath}.njk`);
+
+// Cartella del componente
+const componentDir = path.dirname(fullPath);
+
+// Se il file esiste, stop
+if (fs.existsSync(fullPath)) {
+  console.log(`❌ Il componente "${componentPath}" esiste già`);
   process.exit(1);
 }
 
-const templateContent = `<!-- Componente ${componentName} -->\n`;
+// Crea le cartelle mancanti (recursive = true 🔥)
+fs.mkdirSync(componentDir, { recursive: true });
 
-fs.writeFileSync(filePath, templateContent, 'utf8');
-console.log(`Componente ${componentName} creato in src/components/${componentName}.njk`);
+// Contenuto iniziale del componente
+const templateContent = `<!-- Component: ${componentPath} -->\n`;
+
+// Scrive il file
+fs.writeFileSync(fullPath, templateContent, 'utf8');
+
+console.log(`✅ Componente creato: src/components/${componentPath}.njk`);
