@@ -8,3 +8,9 @@
 
 - estendere il template: {% extends "base.njk" %}
 - includere il componente/pagina {% include "header.njk" %} 
+
+## push cartella dist su repo diverso
+git add -f dist
+git commit
+git subtree push --prefix dist dist-repo main
+git reset --hard HEAD~1
