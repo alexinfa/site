@@ -1,0 +1,14 @@
+@use '../base/variables' as *;
+@use '../base/mixin' as *;
+@use '../base/media-query' as *;
+@use '../base/fonts' as *;
+
+canvas {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+
+    @media #{$to-small-device} {
+        display: none;
+    }
+}

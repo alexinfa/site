@@ -1,0 +1,241 @@
+@use '../base/variables' as *;
+@use '../base/mixin' as *;
+@use '../base/media-query' as *;
+@use '../base/fonts' as *;
+
+.chips {
+    @include border-radius(rem(20));
+    min-width: rem(145);
+    height: rem(40);
+    border: rem(2) solid $primary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.125rem;
+    margin-right: rem(10);
+    padding-top: rem(4);
+
+    @media #{$to-small-device} {
+        margin-right: rem(5);
+    }
+}
+
+.btn-large {
+    @include animation(.4s);
+    width: rem(120);
+    height: rem(120);
+    border: rem(2) solid $primary;
+    background: transparent;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: rem(12);
+    background-color: rgba($dark, 0.8);
+    box-shadow: 0 rem(4) rem(30) rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(rem(3));
+    -webkit-backdrop-filter: blur(rem(3));
+    z-index: 1000;
+
+    @media #{$to-large-device} {
+        width: rem(80);
+        height: rem(80);
+        background-color: $dark;
+    }
+
+    &::after {
+        content: "";
+        display: flex;
+        background-image: url(../images/svg/arrow.svg);
+        width: rem(50);
+        height: rem(50);
+    }
+
+    &.move {
+        @include rotation(180deg);
+        border: rem(2) solid $secondary;
+        left: calc(100% - rem(132));
+
+        @media #{$to-large-device} {
+            left: calc(100% - rem(92));
+        }
+
+        &::after {
+            background-image: url(../images/svg/arrow-secondary.svg);
+        }
+    }
+
+    &-to-top {
+        @include rotation(180deg);
+        border: rem(2) solid $secondary;
+        left: calc(100% - rem(132));
+        bottom: rem(35);
+        position: fixed;
+        z-index: 2;
+        opacity: 1;
+
+        @media #{$to-small-device}{
+            left: calc(100% - rem(92));
+        }
+
+        &.hide {
+            opacity: 0
+        }
+    }
+}
+
+.btn-primary{
+    background-color: $secondary;
+    color: $dark;
+    border: rem(1) solid $secondary;
+
+    &:hover, &:active, &:focus{
+        background-color: $dark;
+        color: $secondary;
+        border: rem(1) solid $secondary;
+    }
+
+    &:focus, &:active:focus{
+        @include box-shadow(0, 0, rem(15), rgba(224,206,111,0.5), $inset: false);
+        background-color: $dark;
+        color: $secondary;
+        border: rem(1) solid $secondary;
+    }
+}
+
+.btn-secondary{
+    background-color: $dark;
+    color: $secondary;
+    border: 1px solid $secondary;
+
+    &:hover, &:active, &:focus{
+        background-color: $secondary;
+        color: $dark;
+        border: 1px solid $secondary;
+    }
+
+    &:focus, &:active:focus{
+        @include box-shadow(0, 0, 15px, rgba(224,206,111,0.5), $inset: false);
+        background-color: $secondary;
+        color: $dark;
+        border: 1px solid $secondary;
+    }
+}
+
+
+// burger menu button
+
+.btn-menu {
+    @include animation(.2s);
+    height: 40px;
+    width: 80px;
+    border: 0;
+    background-color: transparent;
+    transform: scaleX(-1);
+
+    .line {
+        transform-origin: center;
+        height: 3px;
+        background-color: $primary;
+        display: block;
+        margin: 12px 0;
+
+        &.line1 {
+            margin-top: 0;
+            animation: linear1 .7s infinite;
+        }
+
+        &.line2 {
+            margin-bottom: 0;
+            animation: linear2 .8s infinite;
+        }
+
+        &.line3 {
+            margin-bottom: 0;
+            animation: linear3 .9s infinite;
+        }
+    }
+
+    &.open {
+        z-index: 999;
+        height: 80px;
+        padding-top: 20px;
+
+        .line {
+
+            &.line1 {
+                @include rotation(135deg);
+                transform-origin: center;
+                margin-top: 0;
+                animation: linear1 0s infinite;
+            }
+
+            &.line2 {
+                @include rotation(45deg);
+                transform-origin: 53px -6px;
+                margin-bottom: 0;
+                animation: linear1 0s infinite;
+            }
+
+            &.line3 {
+                margin-bottom: 0;
+                animation: linear1 0s infinite;
+            }
+        }
+    }
+}
+
+/* animation btn menu */
+@keyframes linear1 {
+    0% {
+        width: 100%;
+    }
+
+    50% {
+        width: 90%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes linear2 {
+    0% {
+        width: 100%;
+    }
+
+    50% {
+        width: 70%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes linear3 {
+    0% {
+        width: 100%;
+    }
+
+    50% {
+        width: 80%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+//
+
+a {
+    color: $primary;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+        color: $primary;
+    }
+}

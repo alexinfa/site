@@ -1,0 +1,42 @@
+@use '../base/variables' as *;
+@use '../base/mixin' as *;
+@use '../base/media-query' as *;
+@use '../base/fonts' as *;
+
+.modal{
+    .modal-content{
+        background-color: $dark-light;
+        border: rem(1) solid $secondary;
+
+        .modal-header{
+            border-bottom: 0;
+
+            .btn-close{
+                background: url(../assets/svg/close.svg);
+                background-position: center;
+                background-repeat: no-repeat;
+                opacity: 1;
+
+                &:focus, &:active:focus{
+                    @include box-shadow(0, 0, 15px, rgba(224,206,111,0.5), $inset: false);
+                    border: rem(1) solid $secondary;
+                }
+            }
+        }
+
+        .modal-footer{
+            border-top: 0;
+        }
+
+        .modal-title{
+            color: $secondary;
+            font-size: 1.5rem;
+        }
+
+        .modal-subtitle{
+            color: $secondary;
+            font-size: 1.125rem;
+            display: block;
+        }
+    }
+}

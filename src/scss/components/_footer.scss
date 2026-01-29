@@ -1,0 +1,23 @@
+@use '../base/variables' as *;
+@use '../base/mixin' as *;
+@use '../base/media-query' as *;
+@use '../base/fonts' as *;
+
+footer{
+    background-color: rgba($dark, 0.8);
+    height: rem(100);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 rem(20);
+    font-size: 0.875rem;
+    z-index: 2;
+
+    >div{
+        z-index: 1;
+    }
+
+    @media #{$to-small-device} {
+        height: rem(40);
+    }
+}

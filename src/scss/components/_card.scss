@@ -1,0 +1,40 @@
+@use '../base/variables' as *;
+@use '../base/mixin' as *;
+@use '../base/media-query' as *;
+@use '../base/fonts' as *;
+
+.card {
+    
+    &.card-slideshow{
+        @include border-radius(0);
+        border: rem(1) solid $secondary;
+        padding: rem(20);
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        margin-bottom: rem(20);
+
+        .image{
+            @include animation(.5s);
+            width: 100%;
+            height: rem(350);
+            background-size: cover;
+            background-position: center;
+            
+            @media #{$from-large-device} {
+                opacity: .8;
+            }
+
+            &:hover{
+                @media #{$from-large-device} {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    //
+    &::after {
+        display: none;
+    }
+}

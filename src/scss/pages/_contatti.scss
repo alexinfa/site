@@ -1,0 +1,85 @@
+@use '../base/variables' as *;
+@use '../base/mixin' as *;
+@use '../base/media-query' as *;
+@use '../base/fonts' as *;
+
+
+#contacts {
+    padding: 0 rem(12);
+    height: calc(100vh - rem(215));
+    align-items: start;
+
+    .z-index {
+        z-index: 2;
+    }
+
+    .text {
+        margin-left: rem(30);
+
+        @media #{$to-large-device} {
+            margin-left: 0;
+        }
+
+        p {
+            margin-left: rem(8);
+
+            @media #{$from-extra-large-device} {
+                padding-right: rem(80);
+            }
+
+            a {
+                font-size: 2rem;
+                color: $secondary;
+                margin: rem(15) 0;
+                display: inline-block;
+
+                @media #{$to-small-device} {
+                    font-size: 1.5rem;
+                }
+
+            }
+        }
+
+        .social {
+            margin-top: rem(60);
+
+            a {
+                @include animation(.1s);
+                margin-right: rem(30);
+                width: rem(30);
+                height: rem(30);
+                display: inline-block;
+
+                &:hover {
+                    @include scale(1.5);
+                }
+            }
+        }
+
+        ul {
+            padding-left: 0;
+            list-style: none;
+
+            li {
+                display: inline-block;
+                margin-right: rem(10);
+                margin-bottom: rem(10);
+            }
+        }
+    }
+
+    //canvas
+    canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        opacity: .3;
+
+        @media #{$to-small-device} {
+            display: none;
+        }
+    }
+
+}

@@ -2,8 +2,192 @@
 
 {% block content %}
 <main>
-  <h1>Home Page</h1>
-  <p>contenuto</p>
-  <a href="about.html">about</a>
+  <h1 class="visually-hidden">Alessandro Infantini - sito web personale</h1>
+  <section class="first-section">
+    <h2 class="visually-hidden">Sezione introduttiva</h1>
+      <div class="container-fluid z-index">
+        <div class="text-intro">
+          Benvenuti nel mio <strong>sito personale</strong>
+        </div>
+        <div class="skill-intro">
+          <ul>
+            <li><span class="chips">web design</span></li>
+            <li><span class="chips">accessibilità</span></li>
+            <li><span class="chips">ux</span></li>
+            <li><span class="chips">team building</span></li>
+            <li><span class="chips">agile</span></li>
+            <li><span class="chips">3D model</span></li>
+            <li><span class="chips">3D print</span></li>
+          </ul>
+        </div>
+        <div class="scroll-down">
+          <a href="#content" class="btn-large" title="naviga i contenuti della pagina" tabindex="-1"></a>
+        </div>
+      </div>
+  </section>
+
+  <section id="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-6">
+          <h2>Bio</h2>
+          <p>
+            Ciao, mi chiamo Alessandro Infantini e sono un <strong>web designer</strong> di Roma. <br>
+            Dopo la maturità classica ho intrapreso la strada del Design laureandomi prima alla
+            triennale di Disegno Industriale per poi specializzarmi in Design, Comunicazione Visiva e
+            Multimediale con tesi di laurea su Realtà Virtuale e Realtà Aumentata. <br>
+            Dal 2010 al 2018 ho lavorato come web designer freelance orientandomi prevaentemente su
+            <strong>portali in Wordpress</strong> (con creazione di temi custom), portali di ecommerce,
+            giornalistici e
+            siti vetrina, mentre dal 2018 ad oggi sono dipendente presso una grande multinazionale di
+            consulenza informatica. <br>
+            Attualmente ricopro il ruolo di <strong>UI developer e Accessibility expert</strong>
+            occupandomi della
+            creazione di portali per le <strong>Pubbliche Amministrazioni</strong> con relativo studio
+            dei flussi di
+            navigazione, User Experience e correttive lato accessibilità su portali esistenti.
+          </p>
+          <div class="social">
+            <a href="https://www.facebook.com/alessandro.infantini/" target="blank" title="vai alla pagina facebook"
+              aria-label="vai alla pagina facebook - apertura sito esterno"><img src="images/svg/facebook.svg"
+                alt="logo facebook"></a>
+            <a href="https://www.instagram.com/ainfagram/" target="blank"
+              aria-label="vai alla pagina instagram - apertura sito esterno"><img src="images/svg/instagram.svg"
+                alt="logo instagram"></a>
+            <a href="https://www.linkedin.com/in/alessandro-infantini/" target="blank"
+              aria-label="vai alla pagina linkedin - apertura sito esterno"><img src="images/svg/linkedin.svg"
+                alt="logo linkedin"></a>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="timeline d-flex">
+        <div class="step">
+          <div class="d-flex">
+            <span class="date">2010</span>
+            <img src="assets/svg/graduate.svg" alt="graduation">
+          </div>
+        </div>
+        <div class="step">
+          <div class="d-flex">
+            <span class="date">2010</span>
+            <span class="description">freelance web designer</span>
+          </div>
+          <ul>
+            <li>UX UI</li>
+            <li>Graphic Design</li>
+            <li>Sviluppo web</li>
+            <li>Wordpress</li>
+            <li>Modellazione 3D</li>
+          </ul>
+        </div>
+        <div class="step">
+          <div class="d-flex">
+            <span class="date">2018 ad oggi</span>
+            <span class="description">UI developer</span>
+          </div>
+          <ul>
+            <li>Sviluppo web</li>
+            <li>Accessibilità (WCAG 2.1, Legge Stanca, AgID)</li>
+            <li>Prototipazione portali</li>
+            <li>UX UI</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="subsection">
+            <h2>Skill</h2>
+            <div class="text">
+              <h3>Sviluppo web</h3>
+              <p>
+                Mi occupo della realizzazione di <strong>portali web in HTML5, SASS (SCSS),
+                  Javascript e JQuery</strong>
+                ottimizzati per l'accessibilità. <br>
+                Per molti anni mi sono occupato dello sviluppo di temi custom per Wordpress e
+                WooCommerce.
+              </p>
+              <h3>Accessibilità</h3>
+              <p>
+                Attualmente lavoro su progetti per le <strong>Pubbliche Amministrazioni</strong>
+                conformi
+                alle principali normative in termini di <strong>accessibilità (WCAG 2.1)</strong>.
+                <br>
+                Mi occupo di trasformare i mockup grafici in template HTML/SCSS/JS o JQuery
+                navigabili,
+                accesssibili e pronti per l’implementazione sui CMS.
+              </p>
+              <h3>Creazione di Design System</h3>
+              <p>
+                Mi occupo della realizzazione di <strong>Design System</strong> per componenti in
+                HTML/CSS/Javascript o JQuery
+                pronti all’uso. <br>
+                <strong>Framework custom</strong> appositamente creati per i vari progetti con parti
+                di
+                codice già
+                predisposte per <strong>l’accessibilità</strong>.
+              </p>
+              <hr>
+              <h3>Modellazione e stampa 3D</h3>
+              <p>
+                Avendo una formazione universitaria come <strong>designer</strong> ho studiato per
+                anni
+                la <strong>modellazione 3D</strong>. <br>
+                Nel tempo ho continuato a coltivare questa passione inizialmente con la semplice
+                modellazione per poi passare allo studio dei processi di stampa <strong>(PLA e
+                  TPU)</strong>. <br>
+                Attualmente realizzo modelli che poi converto in formato STL e che stampo in
+                seguito
+                con la mia stampante personale.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="subsection">
+            <h2>Linguaggi</h2>
+            <div class="skill-container">
+              <ul>
+                <li><span class="chips">HTML</span></li>
+                <li><span class="chips">CSS</span></li>
+                <li><span class="chips">SASS</span></li>
+                <li><span class="chips">Javascript</span></li>
+                <li><span class="chips">JQuery</span></li>
+                <li><span class="chips">PHP</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="subsection">
+            <h2>Software</h2>
+            <div class="skill-container">
+              <ul>
+                <li><span class="chips">VS Code</span></li>
+                <li><span class="chips">Node.js</span></li>
+                <li><span class="chips">Git</span></li>
+                <li><span class="chips">Figma</span></li>
+                <li><span class="chips">Photoshop</span></li>
+                <li><span class="chips">Illustrator</span></li>
+                <li><span class="chips">Adobe XD</span></li>
+                <li><span class="chips">Rhinoceros</span></li>
+                <li><span class="chips">Cinema 4D</span></li>
+                <li><span class="chips">Cura</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <canvas id="pacmanCanvas" width="650"></canvas>
+
 </main>
 {% endblock %}

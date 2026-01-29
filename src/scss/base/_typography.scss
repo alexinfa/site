@@ -1,0 +1,93 @@
+@use 'variables' as *;
+@use 'mixin' as *;
+@use 'media-query' as *;
+@use 'fonts' as *;
+
+h1 {
+    @extend .poppins-rg;
+
+    font-size: 2.5rem;
+    font-weight: normal;
+    color: $primary;
+}
+
+h2 {
+    @extend .poppins-sb;
+
+    font-size: 2.5rem;
+    line-height: 1.4rem;
+    display: block;
+    color: $secondary;
+    margin-bottom: 40px;
+
+    &::after{
+        content: ".";
+        display: inline;
+        margin-left: 10px;
+    }
+}
+
+h3 {
+    @extend .poppins-rg;
+
+    font-size: 2rem;
+    margin-bottom: 30px;
+    margin-top: 70px;
+}
+
+h4 {
+    @extend .poppins-sb;
+
+    font-size: 1rem;
+    line-height: 20px;
+    font-weight: initial;
+}
+
+h5 {
+    font-size: 1.375rem;
+}
+
+strong{
+    @extend .poppins-sb;
+}
+
+
+// text troncate
+
+.tr-p2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    max-height: rem(48);
+    height: rem(48);
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.tr-p4 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: rem(23);
+    max-height: rem(90);
+    height: rem(90);
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+.title-tr-p6 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    max-height: rem(160);
+    height: rem(160);
+    line-height: 1.2;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+
+    @media #{$to-small-device}{
+        max-height: rem(150);
+        height: rem(150);
+    }
+
+}

@@ -1,0 +1,74 @@
+@use 'variables' as *;
+@use 'mixin' as *;
+@use 'media-query' as *;
+@use 'fonts' as *;
+
+html,
+body {
+    @extend .poppins-rg;
+
+    position: relative;
+    color: $primary;
+    font-size: 16px;
+    background-color: $black;
+    margin: 0;
+    cursor: url(../assets/svg/cursor.svg), auto;	
+
+    @media #{$to-small-device} {
+        overflow-x: hidden;
+    }
+
+
+    strong {
+        @extend .poppins-sb;
+        color: $secondary;
+    }
+
+    &.noscroll{
+        overflow: hidden; 
+
+        .scroll-down, .btn-large-to-top {
+            display: none;
+        }
+    }
+}
+
+.mb-w{
+    margin-bottom: 80px;
+}
+
+hr:not([size]) {
+    height: 2px;
+    background-color: $secondary;
+    margin: 60px 0;
+    opacity: 1;
+}
+
+// Scrollbar custom
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: rgba($dark, 0.8);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: $secondary;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba($secondary, 0.5);
+}
+
+// link
+a{
+    &.link-color{
+        color: $secondary;
+    }
+}

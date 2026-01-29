@@ -1,0 +1,58 @@
+@use '../base/variables' as *;
+@use '../base/mixin' as *;
+@use '../base/media-query' as *;
+@use '../base/fonts' as *;
+
+
+#work {
+    padding: 0;
+
+    h2{
+        margin-bottom: 0;
+    }
+
+    .text {
+        margin-left: rem(30);
+
+        @media #{$to-large-device} {
+            margin-left: 0;
+        }
+
+        p {
+            margin-left: rem(8);
+
+            @media #{$from-extra-large-device} {
+                padding-right: rem(80);
+            }
+        }
+    }
+
+    ul {
+        padding-left: 0;
+        list-style: none;
+
+        li {
+            display: inline-block;
+            margin-bottom: rem(10);
+
+            
+            @media #{$from-large-device}{
+                margin-right: rem(10);
+            }
+        }
+    }
+
+    .section-portfolio{
+        overflow: hidden;
+        height: calc(100vh - rem(215));
+        width: 100%;
+        background-color: $dark;
+
+        .overlay-section{
+            @include rotation(180deg);
+            width: 100%;
+            height: 100%;
+            background-color: #f00;
+        }
+    }
+}

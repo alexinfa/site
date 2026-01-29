@@ -1,0 +1,76 @@
+@use '../base/variables' as *;
+@use '../base/mixin' as *;
+@use '../base/media-query' as *;
+@use '../base/fonts' as *;
+
+.navigation {
+    @extend.poppins-lt;
+    font-size: 3.75rem;
+    text-align: center;
+    z-index: 999;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: calc(100vw - rem(130));
+    height: 100vh;
+    background-color: $dark;
+    opacity: .95;
+
+    @media #{$to-large-device} {
+        opacity: 1;
+        width: calc(100vw - rem(100));
+        text-align: left;
+        border-right: rem(1) solid $primary;
+    }
+    @media #{$to-small-device} {
+        font-size: 3rem;
+    }
+    @media #{$to-extra-small-device} {
+        font-size: 2.5rem;
+    }
+
+
+    &.show {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    ul {
+        padding-left: 0;
+        list-style: none;
+    }
+
+    a{
+        @include animation(.2s); 
+        position: relative;
+        display: block;
+
+        &.color{
+            color: $secondary-light;
+
+            &:hover{
+                color: $secondary;
+
+                &::after{
+                    background-color: $secondary;
+                }
+            }
+        }
+
+        &:hover{
+            color: $secondary;
+            text-decoration: none;
+
+            &::after{
+                content: "";
+                display: block;
+                position: absolute;
+                width: 100%;
+                height: rem(2);
+                background-color: $secondary;
+            }
+        }
+    }
+}

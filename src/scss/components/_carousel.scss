@@ -1,0 +1,140 @@
+// SLICK CAROUSEL
+
+.slick-track {
+    padding-bottom: rem(10);
+}
+
+.slick-list {
+    margin: 0 rem(-8);
+
+    .slick-slide {
+        margin-left: rem(8);
+        margin-right: rem(8);
+
+        @media #{$to-small-device} {
+            margin-left: rem(2);
+            margin-right: rem(2);
+        }
+
+        .card.services-card {
+            margin-bottom: 0;
+        }
+
+    }
+
+}
+
+// -- arrow
+.slick-prev,
+.slick-next {
+
+    width: rem(38);
+    height: rem(38);
+    -webkit-border-radius: rem(19);
+    -moz-border-radius: rem(19);
+    border-radius: rem(19);
+    background-color: $blu-1 !important;
+    position: absolute;
+    z-index: 1;
+    //transform: translateY(...);
+
+    &.slick-disabled {
+        opacity: .5;
+        pointer-events: none;
+
+        &::before {
+            opacity: 1;
+        }
+    }
+
+    &:focus {
+        top: 50%;
+        border-color: #f90;
+        -webkit-box-shadow: 0 0 0 rem(2) #f90;
+        box-shadow: 0 0 0 rem(2) #f90;
+        outline: 1px;
+    }
+
+}
+
+
+.slick-prev {
+    left: rem(-19);
+
+    @media #{$to-large-device} {
+        left: rem(-24);
+    }
+
+    &::before {
+        font-family: 'inail-icons';
+        display: block;
+        position: absolute;
+        content: "\e926";
+        color: $white;
+        font-size: 1rem;
+        top: rem(18);
+        opacity: 1;
+        left: rem(9);
+    }
+}
+
+.slick-next {
+    right: rem(-19);
+
+    
+    @media #{$to-large-device} {
+        right: rem(-24);
+    }
+
+    &::before {
+        font-family: 'inail-icons';
+        display: block;
+        position: absolute;
+        content: "\e927";
+        color: $white;
+        font-size: 1rem;
+        top: rem(18);
+        opacity: 1;
+        right: rem(9);
+    }
+}
+
+// -- dots
+
+.slick-dots {
+    text-align: left;
+    bottom: rem(-44);
+
+    @media #{$to-small-device} {
+        display: none !important;
+    }
+
+    li {
+        width: auto;
+        margin-left: rem(8);
+
+        &.slick-active {
+            button {
+                height: rem(6);
+                background-color: $blu-1;
+            }
+        }
+
+        button {
+            width: rem(54);
+            height: rem(4);
+            background-color: $neutro-2;
+            padding: 0;
+
+            &::before {
+                display: none;
+            }
+        }
+    }
+}
+
+.slick-slider.slick-dotted{
+    @media #{$to-small-device}{
+        margin-bottom: 0;
+    }
+}

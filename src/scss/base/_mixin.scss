@@ -1,0 +1,101 @@
+@use "sass:math";
+
+/* converti px in rem es: font-size: rem(32); = font-size: 2rem */
+@function rem($size, $is-positive: true) {
+  $remSize: math.div($size, 16);
+  @if $is-positive {
+    @return #{$remSize}rem;
+  } @else {
+    @return -#{$remSize}rem;
+  }
+}
+
+/* animation
+esempio: @include animation(.5s);
+*/
+@mixin animation($time) {
+    -webkit-transition: all $time ease-out;
+    -moz-transition: all $time ease-out;
+    -o-transition: all $time ease-out;
+    transition: all $time ease-out;
+}
+
+/* traslation
+esempio: @include translateXY(10px, 10px);
+*/
+@mixin translateXY($translateX, $translateY) {
+    -webkit-transform: translate($translateX, $translateY);
+    -moz-transform: translate($translateX, $translateY);
+    -o-transform: translate($translateX, $translateY);
+    -ms-transform: translate($translateX, $translateY);
+    transform: translate($translateX, $translateY);
+}
+
+/* scale
+esempio @include scale(.5);
+*/
+@mixin scale($scale) {
+    -webkit-transform: scale($scale);
+    -moz-transform: scale($scale);
+    -o-transform: scale($scale);
+    -ms-transform: scale($scale);
+    transform: scale($scale);
+}
+
+/* border radius 
+esempio: @include border-radius(10px);
+*/
+@mixin border-radius($radius) {
+    border-radius: $radius;
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    -o-border-radius: $radius;
+}
+
+/* box shadow 
+esempio: @include box-shadow(5px, 5px, 5px, rgba(0,0,0,0.5), $inset: true);
+*/
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+    @if $inset {
+        -webkit-box-shadow: inset $top $left $blur $color;
+        -moz-box-shadow: inset $top $left $blur $color;
+        box-shadow: inset $top $left $blur $color;
+    }
+
+    @else {
+        -webkit-box-shadow: $top $left $blur $color;
+        -moz-box-shadow: $top $left $blur $color;
+        box-shadow: $top $left $blur $color;
+    }
+}
+
+/* CSS Trasform: rotation 
+esempio: @include rotation(45deg);
+*/
+@mixin rotation($deg) {
+    transform: rotate($deg);
+    -webkit-transform: rotate($deg);
+    -moz-transform: rotate($deg);
+}
+
+/* placeholder per input e form generici 
+esempio: @include placeholder(#f00);
+*/
+@mixin placeholder($pcolor) {
+    ::-webkit-input-placeholder {
+        color: $pcolor;
+    }
+
+    ::-moz-placeholder {
+        color: $pcolor;
+    }
+
+    :-ms-input-placeholder {
+        color: $pcolor;
+    }
+
+    :-moz-placeholder {
+        color: $pcolor;
+    }
+}
