@@ -1,33 +1,38 @@
 document.addEventListener("DOMContentLoaded", function () {
+  var showMenu = document.querySelector(".btn-menu");
+  showMenu.addEventListener("click", function (e) {
+    let menuContent = document.querySelector(".navigation");
+    menuContent.classList.toggle("show");
+    showMenu.classList.toggle("open");
+    document.body.classList.toggle("noscroll");
+  });
 
-    var showMenu = document.querySelector(".btn-menu");
-    showMenu.addEventListener("click", function (e) {
-        let menuContent = document.querySelector(".navigation");
-        menuContent.classList.toggle("show");
-        showMenu.classList.toggle("open");
-        document.body.classList.toggle("noscroll");  
-    });
+  var scrollPageBtn = document.querySelector(".btn-large");
+  var headerScroll = document.querySelector(".head");
+  var burgerMenuScroll = document.querySelector(".btn-menu");
+  window.addEventListener("scroll", function () {
+    let scroll = window.scrollY;
+    if (scroll > 1) {
+      scrollPageBtn.classList.add("move");
+      scrollPageBtn.href = "#top";
+      headerScroll.classList.add("resize");
+      burgerMenuScroll.classList.add("color");
+    } else {
+      scrollPageBtn.classList.remove("move");
+      headerScroll.classList.remove("resize");
+      burgerMenuScroll.classList.remove("color");
+      scrollPageBtn.href = "#content";
+    }
+  });
 
-    var scrollPageBtn = document.querySelector(".btn-large");
-    window.addEventListener("scroll", function () {
-        let scroll = window.scrollY;
-        if (scroll > 1) {
-            scrollPageBtn.classList.add("move");
-            scrollPageBtn.href = "#top";
-        } else {
-            scrollPageBtn.classList.remove("move");
-            scrollPageBtn.href = "#content";
-        }
-    });
+  // // carousel
+  // $('.one-time').slick({
+  //     dots: false,
+  //     infinite: true,
+  //     speed: 300,
+  //     slidesToShow: 1,
+  //     adaptiveHeight: true
+  // });
 
-    // // carousel
-    // $('.one-time').slick({
-    //     dots: false,
-    //     infinite: true,
-    //     speed: 300,
-    //     slidesToShow: 1,
-    //     adaptiveHeight: true
-    // });
-
-    console.log("JS loaded");
+  console.log("JS loaded");
 });
