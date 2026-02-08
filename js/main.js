@@ -25,14 +25,25 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // // carousel
-  // $('.one-time').slick({
-  //     dots: false,
-  //     infinite: true,
-  //     speed: 300,
-  //     slidesToShow: 1,
-  //     adaptiveHeight: true
-  // });
+  // loader
 
-  console.log("JS loaded");
+  window.addEventListener("load", function () {
+    const loader = document.getElementById("loader");
+    const seen = localStorage.getItem("loaderSeen");
+    document.body.style.overflow = "hidden";
+    if (seen) {
+      loader.style.display = "none";
+      document.body.style.overflow = "";
+    } else {
+      setTimeout(() => {
+        loader.classList.add("fade-out");
+
+        setTimeout(() => {
+          loader.style.display = "none";
+          document.body.style.overflow = "";
+        }, 800);
+        localStorage.setItem("loaderSeen", "true");
+      }, 2000);
+    }
+  });
 });
