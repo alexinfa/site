@@ -12,11 +12,11 @@
       }
 
       .cls-2 {
-        stroke: #fff;
+        stroke: transparent;
       }
 
       .cls-3 {
-        fill: #e2c94d;
+        fill: #990000;
       }
     </style>
   </defs>

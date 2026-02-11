@@ -42,11 +42,9 @@ document.addEventListener("DOMContentLoaded", function () {
       scrollPageBtn.classList.add("move");
       scrollPageBtn.href = "#top";
       headerScroll.classList.add("resize");
-      burgerMenuScroll.classList.add("color");
     } else {
       scrollPageBtn.classList.remove("move");
       headerScroll.classList.remove("resize");
-      burgerMenuScroll.classList.remove("color");
       scrollPageBtn.href = "#content";
     }
   });
