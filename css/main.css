@@ -23,7 +23,7 @@ esempio: @include rotation(45deg);
 /* placeholder per input e form generici 
 esempio: @include placeholder(#f00);
 */
-.poppins-lt, .navigation {
+.poppins-lt, .page .contact p:first-child a, .navigation {
   font-family: "Poppins", sans-serif;
   font-weight: 300;
 }
@@ -50,33 +50,38 @@ body strong, h4, strong {
   font-weight: 300;
 }
 
-.montserrat-rg, .skills ul, section.content .wrapper-box-container .box-container .element-wrapper ul,
-section.content .wrapper-box-container .box-container a ul, section.content .wrapper-box-container .box-container .box:hover h3, h1 {
+.montserrat-rg, section.content .wrapper-box-container .box-container .element-wrapper ul,
+section.content .wrapper-box-container .box-container a ul, section.content .wrapper-box-container .box-container .box:hover h3 {
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
 }
 
-.montserrat-sb, section.first-section .text-intro p:nth-child(2), h2 {
+.montserrat-sb, section.first-section .text-intro p:nth-child(2), h1, h2 {
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
 }
 
-.montserrat-bd, #page h1 {
+.montserrat-bd {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
 }
 
 /* base */
 h1 {
-  font-size: 3rem;
+  font-size: 4.875rem;
   font-weight: normal;
   color: #333333;
 }
 #page h1 {
   font-size: 4rem;
-  background: linear-gradient(to top, #797979, #333333);
+  background: linear-gradient(to left, #797979, #333333);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+@media (min-width: 1399.98px) {
+  #page h1 {
+    font-size: 5.25rem;
+  }
 }
 
 h2 {
@@ -84,12 +89,7 @@ h2 {
   line-height: 1.4rem;
   display: block;
   color: #990000;
-  margin-bottom: 40px;
-}
-h2::after {
-  content: ".";
-  display: inline;
-  margin-left: 10px;
+  margin-bottom: 2.5rem;
 }
 h2.section-title {
   margin-bottom: 3.125rem;
@@ -106,6 +106,10 @@ h2.section-title::before {
   width: calc(100vw - 31.25rem);
   height: 0.1875rem;
   background-color: #990000;
+}
+#page h2 {
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
 }
 
 h3 {
@@ -207,12 +211,15 @@ hr:not([size]) {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 0.375rem;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
   background: rgba(26, 26, 26, 0.8);
+}
+#page ::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 /* Handle */
@@ -222,7 +229,7 @@ hr:not([size]) {
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(223, 223, 223, 0.5);
+  background: #990000;
 }
 
 a.link-color {
@@ -737,15 +744,34 @@ a:hover {
 
 /* pages */
 /* base */
-#page p {
-  max-width: 45rem;
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-top: 1.5rem;
-}
-
 #page section {
-  margin-top: 3rem;
+  min-height: calc(100vh - 9.6875rem);
+  padding: 0 1.5625rem;
+}
+@media (min-width: 992px) {
+  #page section {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+@media (min-width: 992px) {
+  #page section .intro {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+  }
+}
+#page section h1 {
+  margin-top: 3.75rem;
+}
+@media (min-width: 992px) {
+  #page section .content {
+    margin: 3.75rem 0 0 3.75rem;
+    max-height: calc(100vh - 15.625rem);
+    overflow-y: auto;
+    padding-right: 3.75rem;
+    position: relative;
+  }
 }
 
 /* base */
@@ -959,35 +985,58 @@ section.content .wrapper-box-container .box-container .box:hover h3 {
   }
 }
 /* base */
-.skills ul {
-  color: #990000;
+.page .content strong {
+  font-size: 1.125rem;
+}
+.page .content p {
+  margin-bottom: 1.5rem;
+}
+.page .content ul {
   list-style: none;
   padding-left: 0;
+  margin-top: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  color: #990000;
+}
+.page .content ul li {
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.page .content ul li::after {
+  content: "|";
+  display: inline-block;
+  margin-left: 0.5rem;
+}
+.page .content ul li:last-child::after {
+  display: none;
+}
+.page .contact {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: start;
+  padding-top: 1.875rem;
+  position: relative;
+}
+.page .contact p {
   display: flex;
   gap: 1rem;
-  font-size: 1rem;
-  margin-top: 3.75rem;
 }
-.skills ul li {
-  border: 2px solid #990000;
-  padding: 0.3125rem 1rem;
+.page .contact p:first-child a {
+  font-size: 1.3125rem;
 }
-
-.features {
-  margin-top: 3rem;
-}
-.features .features-item .image img {
+.page .contact::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: auto;
-  opacity: 0.7;
-}
-@media (min-width: 992px) {
-  .features .features-item .image {
-    margin-right: 1rem;
-  }
-}
-.features .features-item:nth-child(even) {
-  flex-direction: row-reverse;
+  height: 2px;
+  background: linear-gradient(to left, #dfdfdf, #333333);
 }
 
 /* base */

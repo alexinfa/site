@@ -48,4 +48,9 @@ document.addEventListener("DOMContentLoaded", function () {
       scrollPageBtn.href = "#content";
     }
   });
+
+  var socialLinks = document.querySelectorAll(".social a");
+  socialLinks.forEach((socialLinks) => {
+    socialLinks.setAttribute("target", "_blank");
+  });
 });
